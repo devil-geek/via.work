@@ -40,16 +40,19 @@ export class Searchbar extends Component {
     if (search === "" || search.length < 2) {
       return;
     }
+    try {
+      const res = await Axios(
+        `http://api.dataatwork.org/v1/jobs/autocomplete?begins_with=${search}`
+      );
 
-    const res = await Axios(
-      `http://api.dataatwork.org/v1/jobs/autocomplete?begins_with=${search}`
-    );
-
-    if (res.data.length > 0) {
-      this.setState({
-        suggestions: res.data,
-        showSuggestions: true
-      });
+      if (res.data.length > 0) {
+        this.setState({
+          suggestions: res.data,
+          showSuggestions: true
+        });
+      }
+    } catch (e) {
+      console.log(e.response.data.error.message);
     }
   };
 
@@ -106,17 +109,24 @@ export class Searchbar extends Component {
   };
 
   selectSuggestion = async suggestion => {
+    if (!suggestion) {
+      return;
+    }
     this.setState({
       suggestions: {},
       search: suggestion.suggestion,
       activeSuggestion: 0
     });
-    const res = await Axios(
-      `http://api.dataatwork.org/v1/jobs/${suggestion.uuid}/related_skills`
-    );
-    console.log("JOB", res.data);
-    const job = { ...res.data, date: moment() };
-    this.props.saveRecent(job);
+    try {
+      const res = await Axios(
+        `http://api.dataatwork.org/v1/jobs/${suggestion.uuid}/related_skills`
+      );
+      console.log("JOB", res.data);
+      const job = { ...res.data, date: moment() };
+      this.props.saveRecent(job);
+    } catch (e) {
+      console.log(e.response.data.error.message);
+    }
   };
 
   onBlur = () => {
