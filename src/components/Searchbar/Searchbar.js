@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { connect } from "react-redux";
-import moment from 'moment'
+import moment from "moment";
 
 import "./Searchbar.scss";
 
-class Searchbar extends Component {
+export class Searchbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,7 @@ class Searchbar extends Component {
   autocomplete = async () => {
     const { search } = this.state;
 
-    if (search === "") {
+    if (search === "" || search.length < 2) {
       return;
     }
 
@@ -115,8 +115,8 @@ class Searchbar extends Component {
       `http://api.dataatwork.org/v1/jobs/${suggestion.uuid}/related_skills`
     );
     console.log("JOB", res.data);
-    const job = {...res.data, date: moment()}
-    this.props.saveRecent(job)
+    const job = { ...res.data, date: moment() };
+    this.props.saveRecent(job);
   };
 
   onBlur = () => {
@@ -161,8 +161,11 @@ class Searchbar extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    saveRecent: (item) => dispatch({ type: "SAVE", value: item })
+    saveRecent: item => dispatch({ type: "SAVE", value: item })
   };
 };
 
-export default connect(null, mapDispatchToProps)(Searchbar);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Searchbar);

@@ -18,7 +18,7 @@
   box-shadow: none;
 }
 
-.badge:not([data-badge=""])::after{
+.badge:not([data-badge=""])::after {
   font-size: .65rem;
   line-height: .6rem;
   padding: .2rem .4rem;

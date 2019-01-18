@@ -3,11 +3,42 @@
 @import './variables';
 @import '~bulma/bulma';
 @import '~bulma-badge/dist/css/bulma-badge';
-
 body {
   margin: 0;
   padding: 0;
   font-family: $font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.click {
+  cursor: pointer;
+}
+
+@include mobile {
+  .navbar-item {
+    padding: .2rem .7rem !important;
+    .icon {
+      margin: .5rem !important;
+    }
+  }
+  .navbar-brand {
+    .navbar-item {
+      .icon {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+  .search {
+    &-input {
+      width: 100% !important;
+      &:focus {
+        width: 100% !important;
+      }
+    }
+  }
+  .autocomplete {
+    flex-grow: 1;
+  }
 }

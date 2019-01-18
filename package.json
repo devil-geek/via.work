@@ -2,10 +2,13 @@
   "name": "via.work",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://devil-geek.github.io/projects/via.work",
   "dependencies": {
     "axios": "^0.18.0",
     "bulma": "^0.7.2",
     "bulma-badge": "^2.0.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "gh-pages": "^2.0.1",
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
@@ -14,6 +17,7 @@
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
+    "react-test-renderer": "^16.7.0",
     "redux": "^4.0.1"
   },
   "scripts": {
