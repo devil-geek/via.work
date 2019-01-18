@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import './styles/main.scss'
-import Home from './containers/Home/Home'
-import Navbar from './components/Navbar/Navbar'
+import React, { Component } from "react";
+import { HashRouter as Router, Route } from "react-router-dom";
+import "./styles/main.scss";
+import Home from "./containers/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
 
 class App extends Component {
   render() {
@@ -10,11 +10,10 @@ class App extends Component {
       <div>
         <Navbar />
         <Router>
-          <Route exact path='/' component={Home} />
+          <Route exact path="/" component={Home} />
         </Router>
       </div>
-
-    )
+    );
   }
 }
 
