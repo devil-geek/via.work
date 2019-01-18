@@ -1,0 +1,26 @@
+.navbar-item {
+  padding: .5rem 1rem;
+  .icon {
+    margin: 0 .75rem;
+  }
+}
+
+.navbar-brand {
+  .navbar-item {
+    .icon {
+      margin-left: .75rem;
+      margin-right: .75rem;
+    }
+  }
+}
+
+.badge[data-badge]::after {
+  box-shadow: none;
+}
+
+.badge:not([data-badge=""])::after{
+  font-size: .65rem;
+  line-height: .6rem;
+  padding: .2rem .4rem;
+  z-index: 2;
+}
